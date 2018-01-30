@@ -8,7 +8,7 @@ time=[21 22 23];
 
 for ds=1:3
 
-w_in=ncread(f_name(ds,:),'W',[1,1,1,time(ds)],dim(ds,:));
+w_in=ncread(f_name(ds,:),'W',[1,1,1,time(ds)],dim(ds,:)); %% store as string matrix
 ph=ncread(f_name(ds,:),'PH',[1,1,1,time(ds)],dim(ds,:));
 phb=ncread(f_name(ds,:),'PHB',[1,1,1,time(ds)],dim(ds,:));
 z=(ph+phb)/9.8;
