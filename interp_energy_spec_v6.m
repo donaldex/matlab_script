@@ -1,21 +1,23 @@
-function a=interp_energy_spec_v5
+function a=interp_energy_spec_v6
 %%indepedent program  
 %%  average with time 18 to 23
-f_name=['/Users/ktlai/Documents/wrfout/wrfout_file/1km/wrfout_d01_0001-01-01_00:00:00';'/Users/ktlai/Documents/wrfout/wrfout_file/1km/wrfout_d01_0001-01-01_00:00:00';'/Users/ktlai/Documents/wrfout/wrfout_file/1km/wrfout_d01_0001-01-01_00:00:00'];
+f_name=['/Volumes/Untitled/1_km/wrfout_d01_0001-01-01_00:00:00';'/Volumes/Untitled/500m/wrfout_d01_0001-01-01_00:00:00';'/Volumes/Untitled/250m/wrfout_d01_0001-01-01_00:00:00'];
 
-dim=[[576,144,101,1];[576,144,101,1];[576,144,101,1]]
+dim=[[576,144,101,1];[1152,288,101,1];[2304,576,101,1]]
 time=[18 19 20 21 22 23];
 
-
-for ds=1:3
-
+sizedim=size(dim(:,1));
+%sizedim=1
+for ds=1:sizedim(1)
+y=[0:dim(ds,2)]
+y=0;
 for dt=1:6
 
 w_in=ncread(f_name(ds,:),'W',[1,1,1,time(dt)],dim(ds,:)); %% store as string matrix
 ph=ncread(f_name(ds,:),'PH',[1,1,1,time(dt)],dim(ds,:));
 phb=ncread(f_name(ds,:),'PHB',[1,1,1,time(dt)],dim(ds,:));
 z=(ph+phb)/9.8;
-%time=21;
+
 h=5000;  %%%height
 [nx,ny,nz,nt]=size(w_in);
 w=w_in;
@@ -75,7 +77,6 @@ sumy_wq(i)=sum(flu_w_line(i,:));
 end
 
 max_sumy_wq=0;
-
 for i=1:nx    
       if sumy_wq(i)>max_sumy_wq
           maxi=i
@@ -106,14 +107,17 @@ y=y+Ek1/6;
 %xlabel('k')
 %ylabel('Ek_w')
 end %%%end of time loop
-k=[0:N/2];
+k=[0:dim(ds,2)/2];
 
 loglog(k,y)
+
+%plot(log(k),log(y))
 
 title('energy spectrum');
 xlabel('k')
 ylabel('Ek_w')
 hold on
+%clear y
 end %%end of dataset loop
 hold off
 
