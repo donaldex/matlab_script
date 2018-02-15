@@ -1,7 +1,7 @@
 function a=interp_energy_spec_v6
 %%indepedent program  
 %%  average with time 18 to 23
-f_name=['/Volumes/Untitled/1_km/wrfout_d01_0001-01-01_00:00:00';'/Volumes/Untitled/500m/wrfout_d01_0001-01-01_00:00:00';'/Volumes/Untitled/250m/wrfout_d01_0001-01-01_00:00:00'];
+f_name=['/home/ktlai/project/ktlai/tke_run/WRFV3_4_km/test/em_quarter/wrfout_d01_0001-01-01_00:00:00';'/home/ktlai/project/ktlai/tke_run/WRFV3_1_km/test/em_quarter_ss/wrfout_d01_0001-01-01_00:00:00';'/home/ktlai/project/ktlai/tke_run/WRFV3_500m/test/em_quarter_ss/wrfout_d01_0001-01-01_00:00:00';'/home/ktlai/project/ktlai/tke_run/WRFV3_250m/test/em_quarter_ss/wrfout_d01_0001-01-01_00:00:00'];
 
 dim=[[576,144,101,1];[1152,288,101,1];[2304,576,101,1]]
 time=[18 19 20 21 22 23];
