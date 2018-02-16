@@ -3,7 +3,7 @@ function a=interp_energy_spec_v6_grah
 %%  average with time 18 to 23
 f_name=['/home/ktlai/project/ktlai/tke_run/WRFV3_4_km/test/em_quarter_ss/wrfout_d01_0001-01-01_00:00:00';'/home/ktlai/project/ktlai/tke_run/WRFV3_1_km/test/em_quarter_ss/wrfout_d01_0001-01-01_00:00:00';'/home/ktlai/project/ktlai/tke_run/WRFV3_500m/test/em_quarter_ss/wrfout_d01_0001-01-01_00:00:00';'/home/ktlai/project/ktlai/tke_run/WRFV3_250m/test/em_quarter_ss/wrfout_d01_0001-01-01_00:00:00'];
 
-dim=[[288,72,101,1];[576,144,101,1];[1152,288,101,1];[2304,576,101,1]]
+dim=[[144,36,101,1];[576,144,101,1];[1152,288,101,1];[2304,576,101,1]]
 time=[18 19 20 21 22 23];
 
 sizedim=size(dim(:,1));
@@ -120,6 +120,6 @@ hold on
 %clear y
 end %%end of dataset loop
 hold off
-
+legend('4km','1km','500m','250m')
 
 end
